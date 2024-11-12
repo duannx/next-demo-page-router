@@ -3,6 +3,7 @@ import Image from "next/image";
 import localFont from "next/font/local";
 import styles from "@/styles/Home.module.css";
 import { InferGetServerSidePropsType } from "next";
+import { useEffect } from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -39,6 +40,12 @@ export default function Home({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   console.log("page running", data);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log("interval in Home Page");
+    }, 2000);
+    return () => clearInterval(interval);
+  });
   return (
     <>
       <Head>
