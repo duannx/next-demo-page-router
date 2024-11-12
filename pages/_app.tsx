@@ -19,6 +19,9 @@ export default function App({ Component, pageProps }: AppProps) {
               <Link href="/"> Home </Link>
             </li>
             <li>
+              <Link href="/blog"> Blog </Link>
+            </li>
+            <li>
               <Link href="/static/1"> Static </Link>
             </li>
             <li>
