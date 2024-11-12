@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import localFont from "next/font/local";
 import styles from "@/styles/Home.module.css";
+import { InferGetServerSidePropsType } from "next";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -14,7 +15,30 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export default function Home() {
+async function getTime(): Promise<number> {
+  return new Promise((res) => {
+    setTimeout(() => {
+      return res(Date.now());
+    }, 1000);
+  });
+}
+
+type Time = {
+  now: number;
+};
+
+export const getServerSideProps = async () => {
+  // Fetch data from external API
+  const res = await getTime();
+  const data: Time = { now: res };
+  // Pass data to the page via props
+  return { props: { data } };
+};
+
+export default function Home({
+  data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  console.log("page running", data);
   return (
     <>
       <Head>
@@ -27,6 +51,7 @@ export default function Home() {
         className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
       >
         <main className={styles.main}>
+          <h1>Current time: {new Date(data.now).toLocaleTimeString()}</h1>
           <Image
             className={styles.logo}
             src="/next.svg"
