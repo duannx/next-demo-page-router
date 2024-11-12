@@ -19,7 +19,13 @@ export default function App({ Component, pageProps }: AppProps) {
               <Link href="/"> Home </Link>
             </li>
             <li>
-              <Link href="/blog"> Blog </Link>
+              <Link href="/static/1"> Static </Link>
+            </li>
+            <li>
+              <Link href="/static-fallback/1"> Static Fallback </Link>
+            </li>
+            <li>
+              <Link href="/isr/1"> ISR </Link>
             </li>
             <li>
               {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
