@@ -40,3 +40,18 @@ a {
     color-scheme: dark;
   }
 }
+
+.container {
+  padding: 2em;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+nav {
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 2em;
+    margin: 1em 0 2em;
+  }
+}
